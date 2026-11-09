@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>polla.com - El lugar supremo de las encuestas y apuestas del corral</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fffbe6',
+                            100: '#fff3b3',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            900: '#422006',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+        }
+        .shimmer {
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .bounce-slow {
+            animation: bounce 2.5s infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-400 selection:text-slate-900">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="scrollToTop()">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center shadow-lg shadow-amber-500/20 text-slate-950 text-2xl font-black">
+                    🐓
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-tight bg-gradient-to-r from-amber-400 to-yellow-200 bg-clip-text text-transparent">polla.com</span>
+                    <span class="block text-[10px] tracking-widest text-amber-500/80 font-bold uppercase">Edición De Lujo</span>
+                </div>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold">
+                <a href="#catalogo" class="hover:text-amber-400 transition-colors">Catálogo VIP</a>
+                <a href="#beneficios" class="hover:text-amber-400 transition-colors">¿Por qué una Polla?</a>
+                <a href="#testimonios" class="hover:text-amber-400 transition-colors">Clientes Satisfechos</a>
+                <a href="#faq" class="hover:text-amber-400 transition-colors">Preguntas Frecuentes</a>
+            </nav>
+
+            <!-- Cart Trigger Button -->
+            <button onclick="toggleCart()" class="relative bg-slate-900 hover:bg-slate-800 text-amber-400 border border-amber-500/30 px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all active:scale-95 shadow-md">
+                <i class="fa-solid fa-feather-pointed text-lg"></i>
+                <span>Mi Nido</span>
+                <span id="cart-count" class="bg-amber-500 text-slate-950 text-xs font-black px-2 py-0.5 rounded-full">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-32 border-b border-slate-800/50">
+            <!-- Glowing Background Orbs -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/3 right-10 w-72 h-72 bg-yellow-400/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider mb-8">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                    ¡El regalo más cotizado del mercado!
+                </div>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                    Elige la <span class="bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent">Polla Perfecta</span> para cada ocasión.
+                </h1>
+                <p class="max-w-2xl mx-auto text-base sm:text-xl text-slate-400 mb-10 font-normal">
+                    Desde modelos clásicos para el día a día hasta ediciones bañadas en oro de 24 quilates. No aceptes imitaciones, llévate la auténtica.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#catalogo" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold text-lg shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-105 transition-all">
+                        Explorar Catálogo 🔥
+                    </a>
+                    <button onclick="suerteRandom()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 border border-slate-700 hover:border-amber-500/50 text-slate-200 font-bold text-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-dice text-amber-400"></i> Sorpréndeme
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Catalog -->
+        <section id="catalogo" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">Nuestro Catálogo Exclusivo</h2>
+                <p class="text-slate-400 max-w-lg mx-auto">Seleccionadas minuciosamente por expertos del plumaje y el prestigio internacional.</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Product 1: Normal -->
+                <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <div>
+                        <div class="h-48 rounded-xl bg-slate-800/80 flex items-center justify-center text-7xl mb-6 relative overflow-hidden group">
+                            <span class="group-hover:scale-125 transition-transform duration-300">🐔</span>
+                            <span class="absolute top-3 left-3 bg-slate-700/80 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-md">Básica</span>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-white">Polla Normal</h3>
+                            <span class="text-2xl font-black text-amber-400">$11</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                            La confiable. Ideal para quienes buscan sencillez, durabilidad y un cacareo estándar a precio de gallinero popular.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Plumas 100% orgánicas</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Resistencia a la intemperie</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Garantía de 3 cacareos/día</li>
+                        </ul>
+                    </div>
+                    <button onclick="addToCart('Polla Normal', 11, '🐔')" class="w-full py-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-white font-bold rounded-xl transition-colors">
+                        Agregar al Carrito
+                    </button>
+                </div>
+
+                <!-- Product 2: Dorada -->
+                <div class="bg-gradient-to-b from-amber-950/30 to-slate-900 border border-amber-500/50 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-400 transition-all duration-300 hover:-translate-y-1 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-12 -top-12 w-28 h-28 bg-amber-500/20 rounded-full blur-xl pointer-events-none"></div>
+                    <div>
+                        <div class="h-48 rounded-xl bg-amber-950/40 border border-amber-500/20 flex items-center justify-center text-7xl mb-6 relative overflow-hidden group">
+                            <span class="group-hover:scale-125 transition-transform duration-300">🐣✨</span>
+                            <span class="absolute top-3 right-3 bg-amber-500 text-slate-950 text-xs font-extrabold px-2.5 py-1 rounded-md uppercase">Más Popular</span>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-amber-200">Polla Dorada</h3>
+                            <span class="text-2xl font-black text-amber-400">$276</span>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                            Bañada en destellos dorados. Diseñada para llamar la atención en cualquier reunión social o competencia de prestigio.
+                        </p>
+                        <ul class="text-xs text-amber-100/80 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-star text-amber-400"></i> Brillo deslumbrante 24/7</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-star text-amber-400"></i> Huevos simbólicos de oro</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-star text-amber-400"></i> Certificado de ostentación</li>
+                        </ul>
+                    </div>
+                    <button onclick="addToCart('Polla Dorada', 276, '🐣✨')" class="w-full py-3 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold rounded-xl hover:brightness-110 transition-all shadow-md shadow-amber-500/20">
+                        Adquirir Dorada
+                    </button>
+                </div>
+
+                <!-- Product 3: Premium -->
+                <div class="bg-gradient-to-b from-slate-900 via-slate-900 to-purple-950/40 border border-purple-500/40 rounded-2xl p-6 flex flex-col justify-between hover:border-purple-400 transition-all duration-300 hover:-translate-y-1 shadow-2xl relative">
+                    <div class="absolute top-3 left-3 bg-purple-500/20 border border-purple-500/40 text-purple-300 text-xs font-bold px-2.5 py-1 rounded-md">Élite Supreme</div>
+                    <div>
+                        <div class="h-48 rounded-xl bg-purple-950/30 border border-purple-500/20 flex items-center justify-center text-7xl mb-6 relative overflow-hidden group">
+                            <span class="group-hover:scale-125 transition-transform duration-300">👑🐓</span>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-purple-200">Polla Premium</h3>
+                            <span class="text-2xl font-black text-purple-400">$599</span>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                            Solo para conocedores exigentes. Incluye inteligencia artificial de cacareo, masajeador corporal e historial genealógico real.
+                        </p>
+                        <ul class="text-xs text-purple-200/80 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-crown text-purple-400"></i> Pedigrí de la realeza avícola</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-crown text-purple-400"></i> Conexión Bluetooth 5.3</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-crown text-purple-400"></i> Soporte VIP prioritario</li>
+                        </ul>
+                    </div>
+                    <button onclick="addToCart('Polla Premium', 599, '👑🐓')" class="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold rounded-xl transition-all shadow-lg shadow-purple-600/25">
+                        Obtener Experiencia VIP
+                    </button>
+                </div>
+
+                <!-- Product 4: Polla Cyberpunk -->
+                <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <div>
+                        <div class="h-48 rounded-xl bg-slate-800/80 flex items-center justify-center text-7xl mb-6 relative overflow-hidden group">
+                            <span class="group-hover:scale-125 transition-transform duration-300">🤖🐓</span>
+                            <span class="absolute top-3 left-3 bg-cyan-950 text-cyan-400 border border-cyan-800 text-xs font-semibold px-2.5 py-1 rounded-md">Edición Neón</span>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-white">Polla Cyberpunk 2077</h3>
+                            <span class="text-2xl font-black text-cyan-400">$849</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                            Equipada con implantes cibernéticos, luces LED de neón y capacidad para minar criptomonedas mientras duerme.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-microchip text-cyan-400"></i> Procesador Quantum-Chicken</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-bolt text-cyan-400"></i> Luces RGB personalizables</li>
+                        </ul>
+                    </div>
+                    <button onclick="addToCart('Polla Cyberpunk 2077', 849, '🤖🐓')" class="w-full py-3 bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-white font-bold rounded-xl transition-colors">
+                        Agregar al Carrito
+                    </button>
+                </div>
+
+                <!-- Product 5: Polla Invisible -->
+                <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-slate-600 transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <div>
+                        <div class="h-48 rounded-xl bg-slate-800/50 flex items-center justify-center text-7xl mb-6 relative overflow-hidden group border border-dashed border-slate-700">
+                            <span class="group-hover:scale-125 transition-transform duration-300 opacity-20">🫥</span>
+                            <span class="absolute top-3 left-3 bg-slate-800 text-slate-400 text-xs font-semibold px-2.5 py-1 rounded-md">Sigilo Total</span>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-white">Polla Invisible</h3>
+                            <span class="text-2xl font-black text-slate-400">$42</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                            Nadie la verá llegar. Ideal para gastar bromas a tus amigos. (Nota: No incluye garantía de localización si la pierdes).
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-eye-slash text-slate-400"></i> Tecnologíca Camuflaje Activo</li>
+                            <li class="flex items-center gap-2"><li class="flex items-center gap-2"><i class="fa-solid fa-ghost text-slate-400"></i> Silenciosa e imperceptible</li>
+                        </ul>
+                    </div>
+                    <button onclick="addToCart('Polla Invisible', 42, '🫥')" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl transition-colors">
+                        Agregar al Carrito
+                    </button>
+                </div>
+
+                <!-- Product 6: Polla Cósmica -->
+                <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-pink-500/40 transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <div>
+                        <div class="h-48 rounded-xl bg-slate-800/80 flex items-center justify-center text-7xl mb-6 relative overflow-hidden group">
+                            <span class="group-hover:scale-125 transition-transform duration-300">🌌🐓</span>
+                            <span class="absolute top-3 left-3 bg-pink-950 text-pink-400 border border-pink-800 text-xs font-semibold px-2.5 py-1 rounded-md">Galáctica</span>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-white">Polla Cósmica</h3>
+                            <span class="text-2xl font-black text-pink-400">$1,299</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                            Forjada con polvo de estrellas y materia oscura. Capaz de distorsionar el espacio-tiempo al poner un huevo.
+                        </p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-meteor text-pink-400"></i> Materia intergaláctica</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-infinity text-pink-400"></i> Inmortalidad cuántica</li>
+                        </ul>
+                    </div>
+                    <button onclick="addToCart('Polla Cósmica', 1299, '🌌🐓')" class="w-full py-3 bg-slate-800 hover:bg-pink-600 hover:text-white text-white font-bold rounded-xl transition-colors">
+                        Agregar al Carrito
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="beneficios" class="py-20 bg-slate-900/50 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-extrabold text-white">¿Por qué elegir polla.com?</h2>
+                    <p class="text-slate-400 mt-2">Liderando el mercado avícola de humor y lujo desde 2024</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800">
+                        <div class="w-16 h-16 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">
+                            🚚
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Envío Veloz en Caja Fuerte</h3>
+                        <p class="text-slate-400 text-sm">Entregas discretas y blindadas en menos de 24 horas directamente a tu puerta.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800">
+                        <div class="w-16 h-16 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">
+                            🛡️
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Garantía Anti-Zorro</h3>
+                        <p class="text-slate-400 text-sm">Si algún depredador intenta tocar tu compra, activamos nuestro sistema de defensa avícola.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800">
+                        <div class="w-16 h-16 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">
+                            💎
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Autenticidad Certificada</h3>
+                        <p class="text-slate-400 text-sm">Cada unidad incluye su propio código NFT y certificado impreso en papiro de gallina.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonios" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Lo que dicen nuestros compradores</h2>
+                <p class="text-slate-400">Reseñas 100% reales de personas muy satisfechas</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4">
+                        ★★★★★
+                    </div>
+                    <p class="text-slate-300 italic text-sm mb-6">"Compré la Polla Dorada de $276 para la boda de mi mejor amigo. Se quedó sin palabras. El mejor regalo de la historia."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center font-bold text-slate-950">CR</div>
+                        <div>
+                            <p class="text-sm font-bold text-white">Carlos R.</p>
+                            <p class="text-xs text-slate-500">Comprador Verificado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4">
+                        ★★★★★
+                    </div>
+                    <p class="text-slate-300 italic text-sm mb-6">"La Polla Normal de $11 superó todas mis expectativas. Cumple lo que promete y despierta a todo el vecindario a las 5 AM."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center font-bold text-slate-950">MP</div>
+                        <div>
+                            <p class="text-sm font-bold text-white">María P.</p>
+                            <p class="text-xs text-slate-500">Amante de las Aves</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4">
+                        ★★★★★
+                    </div>
+                    <p class="text-slate-300 italic text-sm mb-6">"Invertir $599 en la Polla Premium cambió mi estatus social. Ahora mis vecinos me miran con el respeto que merezco."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-slate-950">JS</div>
+                        <div>
+                            <p class="text-sm font-bold text-white">Juan S.</p>
+                            <p class="text-xs text-slate-500">Inversionista de Elite</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 bg-slate-900/30 border-t border-slate-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-extrabold text-white text-center mb-12">Preguntas Frecuentes</h2>
+                <div class="space-y-4">
+                    <details class="group bg-slate-900 border border-slate-800 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between cursor-pointer">
+                            <h3 class="text-lg font-bold text-white">¿Es polla.com un sitio real?</h3>
+                            <span class="text-amber-400 group-open:-rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+                            ¡Es totalmente real en nuestros corazones y en este sitio web! Todos los productos y precios aquí expuestos son simulaciones cómicas creadas para sacar una sonrisa.
+                        </p>
+                    </details>
+                    <details class="group bg-slate-900 border border-slate-800 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between cursor-pointer">
+                            <h3 class="text-lg font-bold text-white">¿Qué pasa si compro la Polla Dorada de $276?</h3>
+                            <span class="text-amber-400 group-open:-rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+                            Recibirás una simulación de compra con confeti digital en pantalla y el respeto eterno de la comunidad avícola.
+                        </p>
+                    </details>
+                    <details class="group bg-slate-900 border border-slate-800 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex items-center justify-between cursor-pointer">
+                            <h3 class="text-lg font-bold text-white">¿Aceptan métodos de pago estrafalarios?</h3>
+                            <span class="text-amber-400 group-open:-rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+                            Aceptamos maicena, semillas de girasol ficticias y tarjetas de crédito de monopolio en nuestro simulador.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <span class="text-2xl">🐓</span>
+                <span class="text-xl font-black text-amber-400">polla.com</span>
+            </div>
+            <p class="text-slate-500 text-sm mb-6">
+                © 2026 polla.com — Todos los derechos reservados. Ninguna ave sufrió estrés durante la programación de esta página.
+            </p>
+            <div class="flex justify-center space-x-6 text-slate-600 text-sm">
+                <a href="#" onclick="alertNotice('Términos de cacareo aceptados automáticamente.'); return false;" class="hover:text-amber-400">Términos</a>
+                <a href="#" onclick="alertNotice('Tu privacidad está tan protegida como un huevo en su nido.'); return false;" class="hover:text-amber-400">Privacidad</a>
+                <a href="#" onclick="alertNotice('Contacto ficticio: gallinero@polla.com'); return false;" class="hover:text-amber-400">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal (Drawer) -->
+    <div id="cart-modal" class="fixed inset-0 z-50 invisible opacity-0 transition-all duration-300">
+        <!-- Backdrop -->
+        <div onclick="toggleCart()" class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"></div>
+        
+        <!-- Cart Panel -->
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-slate-900 border-l border-slate-800 p-6 flex flex-col justify-between shadow-2xl transform translate-x-full transition-transform duration-300" id="cart-panel">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                    <h3 class="text-xl font-extrabold text-white flex items-center gap-2">
+                        <span>🪺</span> Tu Nido de Compras
+                    </h3>
+                    <button onclick="toggleCart()" class="text-slate-400 hover:text-white text-xl">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                
+                <!-- Cart Items List -->
+                <div id="cart-items" class="py-6 space-y-4 max-h-[60vh] overflow-y-auto">
+                    <!-- Items inserted via JS -->
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-6">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-slate-400 font-semibold">Total estimado:</span>
+                    <span id="cart-total" class="text-3xl font-black text-amber-400">$0</span>
+                </div>
+                <button onclick="checkout()" class="w-full py-4 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-lg rounded-xl shadow-lg hover:brightness-110 active:scale-95 transition-all">
+                    Finalizar Compra Ficticia 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Notification Box (Replaces alert) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-slate-900 border border-amber-500/50 text-white px-5 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+            <span id="toast-icon" class="text-2xl">🎉</span>
+            <div>
+                <h4 id="toast-title" class="font-bold text-amber-400 text-sm">Notificación</h4>
+                <p id="toast-msg" class="text-xs text-slate-300">Mensaje de prueba</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script>
+        let cart = [];
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            const panel = document.getElementById('cart-panel');
+            
+            if (modal.classList.contains('invisible')) {
+                modal.classList.remove('invisible', 'opacity-0');
+                panel.classList.remove('translate-x-full');
+            } else {
+                modal.classList.add('opacity-0');
+                panel.classList.add('translate-x-full');
+                setTimeout(() => {
+                    modal.classList.add('invisible');
+                }, 300);
+            }
+        }
+
+        function addToCart(name, price, icon) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ name, price, icon, qty: 1 });
+            }
+            updateCartUI();
+            showToast('¡Añadido al nido!', `${name} agregada con éxito por $${price}.`, icon);
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const countEl = document.getElementById('cart-count');
+            const totalEl = document.getElementById('cart-total');
+
+            const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+            countEl.innerText = totalItems;
+            totalEl.innerText = `$${totalPrice.toLocaleString()}`;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-10 text-slate-500">
+                        <p class="text-4xl mb-2">🥚</p>
+                        <p class="text-sm">Tu nido está vacío por ahora.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="flex items-center justify-between bg-slate-800/60 p-4 rounded-xl border border-slate-700/50">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">${item.icon}</span>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">${item.name}</h4>
+                            <p class="text-xs text-amber-400 font-bold">$${item.price} x ${item.qty}</p>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart('${item.name}')" class="text-slate-500 hover:text-red-400 transition-colors p-2">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('Nido vacío', 'Agrega al menos una polla antes de comprar.', '⚠️');
+                return;
+            }
+            
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            cart = [];
+            updateCartUI();
+            toggleCart();
+            
+            showToast('¡Compra exitosa! 🥳', `Has gastado $${total.toLocaleString()} ficticios. ¡Gracias por confiar en polla.com!`, '📜');
+        }
+
+        function suerteRandom() {
+            const opciones = [
+                { name: 'Polla Normal', price: 11, icon: '🐔' },
+                { name: 'Polla Dorada', price: 276, icon: '🐣✨' },
+                { name: 'Polla Premium', price: 599, icon: '👑🐓' },
+                { name: 'Polla Cyberpunk 2077', price: 849, icon: '🤖🐓' }
+            ];
+            const random = opciones[Math.floor(Math.random() * opciones.length)];
+            addToCart(random.name, random.price, random.icon);
+        }
+
+        function alertNotice(msg) {
+            showToast('Información', msg, 'ℹ️');
+        }
+
+        function showToast(title, message, icon = '🎉') {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-msg').innerText = message;
+            document.getElementById('toast-icon').innerText = icon;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
